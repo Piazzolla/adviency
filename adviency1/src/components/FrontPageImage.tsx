@@ -1,13 +1,43 @@
-import bgImage from '../assets/dallycpxm.png';
+import { Image } from "@nextui-org/react";
+import imageArray from '../helpers/imageLoader'
+import { useEffect, useState } from 'react';
 
-const frontPageImageStyle = { 
-  //  height: 'auto', 
- //   maxWidth: '100%',
+const frontPageImageStyle = {
+    //  height: 'auto', 
+    //   maxWidth: '100%',
 }
 
 
 export const FrontPageImage = () => {
-  return (
-    <img src={bgImage} className='imagenPortada rounded' style={ frontPageImageStyle } ></img>
-  )
+
+    const [actualImageIx, setActualImageIx] = useState(0)
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (actualImageIx === imageArray.length - 1) {
+                setActualImageIx(0);
+            }
+            else {
+                setActualImageIx((prevImage) => prevImage + 1 )
+            }
+        }, 1000);
+
+        return () => clearInterval(interval);
+
+    }, [actualImageIx])
+
+
+    return (
+        <Image
+           // width={320}
+           // height={320}
+            //scr={ bgImage }
+            src={imageArray[actualImageIx]}
+            alt=""
+            objectFit='cover'
+        >
+
+        </Image>
+        //    <img src={bgImage} className='imagenPortada rounded' style={ frontPageImageStyle } ></img>
+    )
 }
