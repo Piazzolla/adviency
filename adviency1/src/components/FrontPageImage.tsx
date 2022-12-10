@@ -20,7 +20,7 @@ export const FrontPageImage = () => {
             else {
                 setActualImageIx((prevImage) => prevImage + 1 )
             }
-        }, 1000);
+        }, 5000);
 
         return () => clearInterval(interval);
 
@@ -29,12 +29,17 @@ export const FrontPageImage = () => {
 
     return (
         <Image
-           // width={320}
+            width={'90%'}
+            
            // height={320}
             //scr={ bgImage }
             src={imageArray[actualImageIx]}
             alt=""
-            objectFit='cover'
+            objectFit='fill'
+            showSkeleton={true}
+            
+            
+            
         >
 
         </Image>

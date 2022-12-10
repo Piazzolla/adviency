@@ -1,6 +1,8 @@
 
-body > #root > div {
-  height: 100vh;
+html, 
+body {
+    height: 100%;
+    background-color: black;
 }
 
 body {
@@ -8,20 +10,19 @@ body {
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-  height: 100vh;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: black;
+  
+  min-height: 100%;;
 }
 
-:root {
-  height: 100vh;
-}
+
 
 
 .regalos{
-  background-color: rgb(28, 17, 79);
+  background-color: black;
+  height: 58em;
   color: white;
   display: flex;
   flex-direction: column;
@@ -32,10 +33,14 @@ body {
 
 }
 
-.regalos:hover {
+.regalos-tarjeta {
+  background-color: red;
+}
+
+/* .regalos:hover {
   transform: scale(1.1);
   transition: 100ms linear;
-}
+} */
 
 h1 {
   font-size: 3.2em;
@@ -54,6 +59,14 @@ h1 {
 .imagenPortada:hover {
   transition: 100ms linear;
   transform: scale(1.1);
+}
+
+.frontPageTitle {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 3em;
+  padding-top: 4em;
 }
 
 
