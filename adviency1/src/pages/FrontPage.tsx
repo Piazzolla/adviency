@@ -23,10 +23,10 @@ export const FrontPage = () => {
                 </Text>
             </div>
             <Grid.Container  justify="center" >
-                <Grid xs={12} md={6} justify="center" alignItems='flex-start' css={{ marginTop:'5em' }}>
+                <Grid xs={12} md={6} justify="center" alignItems='flex-start' css={{ marginTop:'3em' }}>
                     <FrontPageImage />
                 </Grid>
-                <Grid xs={12} md={6} justify="center" alignItems='flex-start' css={{ marginTop:'15em' }}>
+                <Grid xs={12} md={6} justify="center" alignItems='flex-start' css={{ marginTop:'9em' }}>
                     <PresentList />
                 </Grid>
 

@@ -1,0 +1,50 @@
+body, html {
+  flex: 0 0 100%;
+  margin: 0px;
+  margin-top: 0px;
+}
+
+
+
+#root {
+  width: 100%;
+  padding: 0%;
+}
+
+.presentListContainer {
+  width: 100%;
+
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul {
+  padding-left: 0%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin-block-start: 0%;
+  flex-direction: column;
+  background-color: black;
+  width: 25%;
+  list-style-type: none;
+}
+
+li {
+  color: rgb(184, 161, 133);
+  font-size: x-large;
+  font-weight: bold;
+}
+
+h1 {
+  margin: 0%;
+  padding: 5%;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+}
+
+

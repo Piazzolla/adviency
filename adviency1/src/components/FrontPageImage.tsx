@@ -29,7 +29,7 @@ export const FrontPageImage = () => {
 
     return (
         <Image
-            width={'90%'}
+            width={'70%'}
             
            // height={320}
             //scr={ bgImage }
