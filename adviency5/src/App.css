@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: white;
+  background-image: url(https://res.cloudinary.com/piazzolla/image/upload/v1670710739/samples/71a7dcdf-8735-4134-8271-c3afdb1ff4f6_cr_0.214.3004_ia9n3k.webp);
+  background-size: 100%;
+  background-position: center center;
+  font-family: sans-serif;
+  height: 100vh;
+}
+
+.main-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.titulo-principal {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: red;
+  padding: 10px;
+  border-radius: 10px;
+  border: 0.25em solid black;
+}
+
+.regalos-list {
+  margin-top: 1em;
+  background-color: white;
+  color: black;
+  list-style: inside;
+  padding: 10px;
+  display: inline-block;
+  border: 0.25em solid black;
+  border-radius: 10px;
+  width: 20%;
+}
+
+.regalos-list-title {
+  margin-bottom: 20px;
+  color: greenyellow;
+}
+
+
+.regalos-list-item-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.regalo-borrar-button {
+  background-color: white;
+  padding: 3px;
+  margin-bottom: 5px;
+}
+
+button {
+  background-color: white;
+  padding: 3px;
+  margin-bottom: 5px;
+  height: 2em;
+  border: 0.25em solid black;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+}
+
+input {
+  margin-right: 10px;
+  border: 0.25em solid black;
+  height: 2em;
+}
+
+.borrar-todo-button {
+  margin-top: 10px;
+}
