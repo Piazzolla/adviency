@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { GiftsContext } from '../context/gifts/GiftsContext';
 import { useForm } from '../hooks/useForm';
 import { GiftListItem } from './GiftListItem';
@@ -11,6 +11,12 @@ export const GiftList = () => {
 
     const { giftList, addGift, deleteAllGifts } = useContext(GiftsContext);
     const { regaloInput, selectValue, onInputChange, onSelectChange } = useForm({ regaloInput: '', selectValue: 1})
+
+    useEffect(() => {
+      localStorage.setItem('gift-list', JSON.stringify(giftList));
+    
+    }, [giftList])
+    
 
 
     return (

@@ -14,6 +14,7 @@ const initialGiftList: Gift[] = [
 
 const GIFTS_INITIAL_STATE: GiftsState = { giftList: initialGiftList }
 
+const retrievedState = localStorage.getItem('gift-list')? JSON.parse(localStorage.getItem('gift-list')!) : null;
 
 type Props = {
    children?: React.ReactNode
@@ -22,7 +23,7 @@ type Props = {
 export const GiftsProvider:FC<Props> = ({ children }) => {
 
 
-   const [state, dispatch] = useReducer(giftsReducer, GIFTS_INITIAL_STATE);
+   const [state, dispatch] = useReducer(giftsReducer, retrievedState? {giftList: retrievedState } : GIFTS_INITIAL_STATE);
 
    const addGift = (newGift:Gift) => {
         dispatch({type: '[Gifts] - Agregar Item', payload: newGift})
