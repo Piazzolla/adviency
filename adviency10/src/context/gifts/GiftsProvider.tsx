@@ -25,7 +25,6 @@ export const GiftsProvider:FC<Props> = ({ children }) => {
    const [state, dispatch] = useReducer(giftsReducer, GIFTS_INITIAL_STATE);
 
    const addGift = (newGift:Gift) => {
-        console.log('hola');
         dispatch({type: '[Gifts] - Agregar Item', payload: newGift})
 
    }

@@ -9,6 +9,19 @@ export const giftsReducer = (state: GiftsState, action: GiftsActionType): GiftsS
 
    switch (action.type) {
        case '[Gifts] - Agregar Item':
+          if(!action.payload.name) {return {...state}}
+          if( state.giftList.map( gift => gift.name).includes(action.payload.name)){
+            const newGiftList = state.giftList.map( gift => {
+                if( gift.name === action.payload.name){
+                    gift.quantity = gift.quantity + action.payload.quantity;
+                }
+                return gift;
+            }) 
+            return {
+                ...state,
+                giftList: newGiftList
+            }
+          }
           return {
                ...state, 
                giftList: [action.payload, ...state.giftList ],
