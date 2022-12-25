@@ -3,11 +3,13 @@ import { GiftsContext } from '../context/gifts/GiftsContext';
 import { useForm } from '../hooks/useForm';
 import { GiftListItem } from './GiftListItem';
 
-const range = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+//const range = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const range = [...Array(10).keys()];
 
 export const GiftList = () => {
 
-    const { giftList, addGift } = useContext(GiftsContext);
+    const { giftList, addGift, deleteAllGifts } = useContext(GiftsContext);
     const { regaloInput, selectValue, onInputChange, onSelectChange } = useForm({ regaloInput: '', selectValue: 1})
 
 
@@ -22,16 +24,15 @@ export const GiftList = () => {
                 />
                 <select
                     name="selectValue"
-                    value={1}
                     onChange = { (event) => onSelectChange(event.target) }
                 >
                     {
-                        range.map(n => <option key={n}>{n}</option>)
+                        range.map(n => <option key={n}>{n+1}</option>)
                     }
                 </select>
                 <button
                     type='button'
-                    onClick={() => addGift({ name: regaloInput, quantity: 1 })}
+                    onClick={() => addGift({ name: regaloInput, quantity: selectValue })}
                 >Agregar
                 </button>
             </form>
@@ -40,6 +41,9 @@ export const GiftList = () => {
                     <GiftListItem  key={gift.name} gift={gift} />
                 )
             }
+            <button
+                onClick={ deleteAllGifts }
+            >Borrar Todo</button>
         </>
     )
 }

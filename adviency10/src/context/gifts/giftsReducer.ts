@@ -4,6 +4,7 @@ import { Gift } from '../../interfaces/gift';
 type GiftsActionType =
     | { type: '[Gifts] - Agregar Item', payload: Gift }
     | { type: '[Gifts] - Borrar Item', payload: Gift }
+    | { type: '[Gifts] - Borrar Todos los Items' }
 
 
 export const giftsReducer = (state: GiftsState, action: GiftsActionType): GiftsState => {
@@ -36,6 +37,12 @@ export const giftsReducer = (state: GiftsState, action: GiftsActionType): GiftsS
             return {
                 ...state,
                 giftList: newGiftList
+            }
+
+        case '[Gifts] - Borrar Todos los Items':
+            return {
+                ...state,
+                giftList: []
             }
 
         default:

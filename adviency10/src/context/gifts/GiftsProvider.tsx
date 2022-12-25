@@ -32,13 +32,18 @@ export const GiftsProvider:FC<Props> = ({ children }) => {
     dispatch({type: "[Gifts] - Borrar Item", payload: gift})
    }
 
+   const deleteAllGifts = () => {
+    dispatch({ type: '[Gifts] - Borrar Todos los Items'})
+   }
+
    return (
        <GiftsContext.Provider value={{
            ...state,
 
            //Methods
            addGift,
-           deleteGift
+           deleteGift,
+           deleteAllGifts
        }}>
            { children }
        </GiftsContext.Provider>
