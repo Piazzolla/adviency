@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { GiftsContext } from '../context/gifts/GiftsContext';
 import { useForm } from '../hooks/useForm';
+import { GiftListItem } from './GiftListItem';
 
 const range = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -32,7 +33,7 @@ export const GiftList = () => {
             </form>
             {
                 giftList.map(gift =>
-                    <li key={gift.name}>{gift.name}{gift.quantity}</li>
+                    <GiftListItem  gift={gift} />
                 )
             }
         </>

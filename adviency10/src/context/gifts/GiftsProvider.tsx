@@ -26,7 +26,10 @@ export const GiftsProvider:FC<Props> = ({ children }) => {
 
    const addGift = (newGift:Gift) => {
         dispatch({type: '[Gifts] - Agregar Item', payload: newGift})
+   }
 
+   const deleteGift = (gift:Gift) => {
+    dispatch({type: "[Gifts] - Borrar Item", payload: gift})
    }
 
    return (
@@ -34,7 +37,8 @@ export const GiftsProvider:FC<Props> = ({ children }) => {
            ...state,
 
            //Methods
-           addGift
+           addGift,
+           deleteGift
        }}>
            { children }
        </GiftsContext.Provider>

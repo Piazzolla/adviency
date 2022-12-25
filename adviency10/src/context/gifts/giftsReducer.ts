@@ -3,6 +3,7 @@ import { Gift } from '../../interfaces/gift';
 
 type GiftsActionType =
    | { type: '[Gifts] - Agregar Item', payload: Gift }
+   | { type: '[Gifts] - Borrar Item', payload: Gift }
 
 
 export const giftsReducer = (state: GiftsState, action: GiftsActionType): GiftsState => {
@@ -26,6 +27,12 @@ export const giftsReducer = (state: GiftsState, action: GiftsActionType): GiftsS
                ...state, 
                giftList: [action.payload, ...state.giftList ],
            }
+        case '[Gifts] - Borrar Item':
+            const newGiftList = state.giftList.filter( g => g.name !== action.payload.name)
+            return {
+                ...state,
+                giftList: newGiftList
+            }
 
         default:
            return state;

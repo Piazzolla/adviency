@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+.delete-icon {
+  width: 18px;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
