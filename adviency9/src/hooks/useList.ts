@@ -1,33 +1,50 @@
 import { useEffect, useState } from "react";
+import { Present } from "../interfaces/Present";
 
 
 
-export const useList = ( initialList:string[] = []) => {
+export const useList = ( initialList:Present[] = []) => {
 
 
     //TODO: get from LocalStorage useEffect(() => {
         
     // }, [])
     
+    const [listState, setListState] = useState(initialList);
 
     const onBorrarItem = (item:string) => {
-        setListState({ ...listState, presents: listState.presents.filter( p => p !== item )});
+        setListState(listState.filter( p => p.name !== item ));
     }
 
     const onBorrarTodo = () => {
-        setListState({...listState, presents: []});
+        setListState([]);
     }
 
-    const onAgregar = (item:string) => {
+    const onAgregar = (item:string, quant = 1) => {
         if(!item) return;
-        setListState({...listState, presents: [item, ...listState.presents]})
+        if( (listState.map( i => i.name)).includes(item)) {
+             
+            const newState = listState.map( i => {
+                if(i.name === item){
+                {
+                    i.name,
+                    i.quantity = i.quantity + quant;
+                }}
+                return i;
+
+            })
+
+            setListState(newState);
+
+        }
+        else {
+            setListState( [...listState, { name: item, quantity: quant}])
+        }
     }
         
-    const [listState, setListState] = useState({presents:initialList});
 
 
     return {
-        ...listState,
         listState,
         onBorrarItem,
         onBorrarTodo,

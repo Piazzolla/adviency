@@ -1,7 +1,8 @@
 import { FC } from "react";
+import { Present } from "../interfaces/Present";
 
 interface Props {
-    present: string;
+    present: Present;
     onBorrarItem: (item: string) => void;
 
 }
@@ -10,9 +11,14 @@ export const PresentListItem: FC<Props> = ({ present, onBorrarItem }) => {
 
     return (
         <>
-            {present}
+            <span>
+                {present.name}
+            </span>
+            <span style={{ marginLeft: '5px', marginRight: '5px'}}>
+                {present.quantity}
+            </span>
             <button
-                onClick={() => onBorrarItem(present)}
+                onClick={() => onBorrarItem(present.name)}
             >x</button>
         </>
     )
