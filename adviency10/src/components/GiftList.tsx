@@ -8,7 +8,7 @@ const range = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 export const GiftList = () => {
 
     const { giftList, addGift } = useContext(GiftsContext);
-    const { regaloInput, onInputChange } = useForm({ regaloInput: '', selectValue: 1})
+    const { regaloInput, selectValue, onInputChange, onSelectChange } = useForm({ regaloInput: '', selectValue: 1})
 
 
     return (
@@ -20,7 +20,11 @@ export const GiftList = () => {
                     value={regaloInput}
                     onChange={(event) => onInputChange(event.target) }
                 />
-                <select>
+                <select
+                    name="selectValue"
+                    value={1}
+                    onChange = { (event) => onSelectChange(event.target) }
+                >
                     {
                         range.map(n => <option key={n}>{n}</option>)
                     }
@@ -33,7 +37,7 @@ export const GiftList = () => {
             </form>
             {
                 giftList.map(gift =>
-                    <GiftListItem  gift={gift} />
+                    <GiftListItem  key={gift.name} gift={gift} />
                 )
             }
         </>

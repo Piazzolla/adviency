@@ -14,8 +14,6 @@ interface FormProp {
 
 export const useForm = (initialForm: FormProp) => {
 
-
-
     const [formState, setFormState] = useState(initialForm);
 
     const onInputChange = ({name, value}:HTMLInputElement) => {
@@ -25,11 +23,20 @@ export const useForm = (initialForm: FormProp) => {
         })
     }
 
+    const onSelectChange = ({name, value}:HTMLSelectElement) => {
+        setFormState({
+            ...formState,
+            [ name ] : Number(value)
+        })
+    }
+
+
     return {
         ...formState,
         formState,
 
-        onInputChange
+        onInputChange,
+        onSelectChange
     }
 
 }
