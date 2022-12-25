@@ -1,11 +1,11 @@
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent, useEffect } from 'react';
 import { PresentListItem } from './PresentListItem';
 import { useList } from '../hooks/useList';
 import { Present } from '../interfaces/Present';
 
 const listInit: Present[] = [
     { name: 'bicicleta', quantity: 1 },
-    { name: 'zapatillas', quantity: 1 },
+    { name: 'zapatillas', quantity: 5 },
     { name: 'libro', quantity: 1 }]
 
 
@@ -13,10 +13,18 @@ const range = [...Array(10).keys()].map(n => n + 1);
 
 export const PresentList = () => {
 
+    
 
-    const { listState, onBorrarTodo, onBorrarItem, onAgregar } = useList(listInit);
+    const { listState, onBorrarTodo, onBorrarItem, onAgregar } = useList(
+        localStorage.getItem('lista')? JSON.parse(localStorage.getItem('lista')!) :  listInit
+    );
     const [inputValue, setInputValue] = useState('');
     const [selectValue, setSelectValue] = useState(range[0])
+
+    useEffect(() => {
+        localStorage.setItem('lista', JSON.stringify(listState));
+    }, [listState])
+
 
     const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
@@ -29,7 +37,7 @@ export const PresentList = () => {
                 onChange={onInputChange}
             />
             <select
-                onChange={(event:ChangeEvent<HTMLSelectElement>) => setSelectValue(Number(event.target.value))}
+                onChange={(event: ChangeEvent<HTMLSelectElement>) => setSelectValue(Number(event.target.value))}
             >
                 {
                     range.map(i => <option key={i}>{i}</option>)

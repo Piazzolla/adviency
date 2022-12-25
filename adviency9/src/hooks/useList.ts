@@ -6,9 +6,17 @@ import { Present } from "../interfaces/Present";
 export const useList = ( initialList:Present[] = []) => {
 
 
-    //TODO: get from LocalStorage useEffect(() => {
-        
-    // }, [])
+    useEffect(() => {
+       if(!initialList) {
+        if(localStorage.getItem('lista'))
+        {
+            initialList = JSON.parse(localStorage.getItem('lista')!);
+        }
+        else {
+            throw Error('No hay una lista inicial de regalos');
+        }
+       }
+    }, [])
     
     const [listState, setListState] = useState(initialList);
 
