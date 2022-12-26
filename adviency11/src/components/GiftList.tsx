@@ -12,7 +12,7 @@ const initialGiftList: Gift[] = [
 
 export const GiftList = () => {
 
-    const { giftList } = useContext(GiftContext);
+    const { giftList, removeAllGifts } = useContext(GiftContext);
     const [showAddGift, setShowAddGift] = useState(false)
 
     return (
@@ -30,6 +30,9 @@ export const GiftList = () => {
                     giftList.map(gift =>
                         <GiftListItem key={gift.name} gift={gift} />)
                 }
+                <button
+                    onClick={ removeAllGifts }
+                >Borrar Todos</button>
 
 
         </>

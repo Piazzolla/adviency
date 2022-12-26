@@ -31,7 +31,11 @@ export const GiftProvider:FC<Props> = ({ children }) => {
     }
 
     const removeGift = (gift:Gift) => {
-        dispatch({type: '[Gift] - Remove Gift', payload: gift})
+        dispatch({type: '[Gift] - Remove Gift', payload: gift});
+    }
+
+    const removeAllGifts = () => {
+        dispatch({type: '[Gift] - Remove All Gifts'});
     }
 
 
@@ -41,6 +45,7 @@ export const GiftProvider:FC<Props> = ({ children }) => {
 
            addGift,
            removeGift,
+           removeAllGifts,
        }}>
            { children }
        </GiftContext.Provider>
