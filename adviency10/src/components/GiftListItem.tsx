@@ -11,7 +11,9 @@ export const GiftListItem: FC<Props> = ({ gift }) => {
     const { deleteGift } = useContext(GiftsContext);
 
     return (
-        <li key={gift.name}>{gift.name}{gift.quantity}
+        <li key={gift.name}>
+        <img className='gift-image' src={gift.imageUrl}></img>
+        {gift.name}{gift.quantity}
 
             <button
                 onClick={ () => deleteGift(gift)}

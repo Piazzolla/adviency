@@ -10,45 +10,55 @@ const range = [...Array(10).keys()];
 export const GiftList = () => {
 
     const { giftList, addGift, deleteAllGifts } = useContext(GiftsContext);
-    const { regaloInput, selectValue, onInputChange, onSelectChange } = useForm({ regaloInput: '', selectValue: 1})
+    const { regaloInput, imageUrl, selectValue, onInputChange, onSelectChange } = useForm({ regaloInput: '', selectValue: 1, imageUrl: '' })
 
     useEffect(() => {
-      localStorage.setItem('gift-list', JSON.stringify(giftList));
-    
+            if(giftList.length > 0) {
+                localStorage.setItem('gift-list', JSON.stringify(giftList));
+            } 
+            else {
+                localStorage.removeItem('gift-list');
+            }
     }, [giftList])
-    
-
 
     return (
         <>
             <h2>Regalos:</h2>
             <form>
+                <label>Regalo</label>
                 <input
                     name="regaloInput"
                     value={regaloInput}
-                    onChange={(event) => onInputChange(event.target) }
+                    onChange={(event) => onInputChange(event.target)}
+                />
+                <label>Url de Imagen</label>
+                <input
+                    name="imageUrl"
+                    value={imageUrl}
+                    onChange={(event) => onInputChange(event.target)}
+
                 />
                 <select
                     name="selectValue"
-                    onChange = { (event) => onSelectChange(event.target) }
+                    onChange={(event) => onSelectChange(event.target)}
                 >
                     {
-                        range.map(n => <option key={n}>{n+1}</option>)
+                        range.map(n => <option key={n}>{n + 1}</option>)
                     }
                 </select>
                 <button
                     type='button'
-                    onClick={() => addGift({ name: regaloInput, quantity: selectValue })}
+                    onClick={() => addGift({ name: regaloInput, quantity: selectValue, imageUrl: imageUrl })}
                 >Agregar
                 </button>
             </form>
             {
                 giftList.map(gift =>
-                    <GiftListItem  key={gift.name} gift={gift} />
+                    <GiftListItem key={gift.name} gift={gift} />
                 )
             }
             <button
-                onClick={ deleteAllGifts }
+                onClick={deleteAllGifts}
             >Borrar Todo</button>
         </>
     )

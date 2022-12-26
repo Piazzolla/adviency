@@ -17,7 +17,8 @@ export const giftsReducer = (state: GiftsState, action: GiftsActionType): GiftsS
                     if (gift.name === action.payload.name) {
                         const modifiedGift:Gift = {
                             name: gift.name,
-                            quantity: gift.quantity + action.payload.quantity
+                            quantity: gift.quantity + action.payload.quantity,
+                            imageUrl: gift.imageUrl
                         }
                         return modifiedGift;
                     }

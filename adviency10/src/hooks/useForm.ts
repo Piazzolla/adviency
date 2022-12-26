@@ -1,15 +1,9 @@
 import { useState } from 'react';
 
-interface Target {
-    target: {
-        name: string;
-        value: string;
-    }
-}
-
 interface FormProp {
      regaloInput: string;
      selectValue: number;
+     imageUrl: string;
 }
 
 export const useForm = (initialForm: FormProp) => {
