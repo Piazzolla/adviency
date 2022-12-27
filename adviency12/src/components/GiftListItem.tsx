@@ -18,6 +18,7 @@ export const GiftListItem:FC<Props> = ({gift}) => {
         ></img>
       <span>{gift.name}</span>  
       <span>{gift.quantity}</span>  
+      <span>{gift.receiver}</span>  
       <button
         onClick={() => removeGift(gift)}
       >x</button>
