@@ -16,6 +16,7 @@ const GIFT_INITIAL_STATE: GiftState = {
    giftList: initialGiftList,
 }
 
+const dataFromStorage = JSON.parse(localStorage.getItem('gift-list') || '[]')
 
 type Props = {
    children?: React.ReactNode
@@ -24,7 +25,7 @@ type Props = {
 export const GiftProvider:FC<Props> = ({ children }) => {
 
 
-   const [state, dispatch] = useReducer(giftReducer, GIFT_INITIAL_STATE)
+   const [state, dispatch] = useReducer(giftReducer, dataFromStorage.length? { giftList: dataFromStorage} : GIFT_INITIAL_STATE)
 
     const addGift = (gift:Gift) => {
         dispatch({type: '[Gift] - Add Gift', payload: gift});

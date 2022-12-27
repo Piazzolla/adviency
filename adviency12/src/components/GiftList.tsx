@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { GiftListItem } from "./GiftListItem"
 import { GiftContext } from '../context/gift/GiftContext';
 import { AddGift } from './AddGift';
@@ -6,7 +6,13 @@ import { AddGift } from './AddGift';
 export const GiftList = () => {
 
     const { giftList, removeAllGifts } = useContext(GiftContext);
-    const [showAddGiftForm, setShowAddGiftForm] = useState(false)
+    const [showAddGiftForm, setShowAddGiftForm] = useState(false);
+
+    useEffect(() => {
+      localStorage.setItem('gift-list', JSON.stringify(giftList));
+    
+    }, [giftList])
+    
 
     return (
         <>

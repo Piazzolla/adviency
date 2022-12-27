@@ -7,10 +7,11 @@ export interface GiftState {
    giftList: Gift[];
 }
 
-const Gift_INITIAL_STATE: GiftState = {
+const GIFT_INITIAL_STATE: GiftState = {
    giftList: initialGiftList,
 }
 
+const dataFromStorage = JSON.parse(localStorage.getItem('gift-list') || '[]') ;
 
 type Props = {
    children?: React.ReactNode
@@ -18,8 +19,9 @@ type Props = {
 
 export const GiftProvider:FC<Props> = ({ children }) => {
 
+   console.log(dataFromStorage);
 
-   const [state, dispatch] = useReducer(giftReducer, Gift_INITIAL_STATE)
+   const [state, dispatch] = useReducer(giftReducer, dataFromStorage.length? {giftList: dataFromStorage } : GIFT_INITIAL_STATE)
 
    const addGift = (gift:Gift) => {
       if(!gift.name || !gift.imageUrl || !gift.quantity) return;
