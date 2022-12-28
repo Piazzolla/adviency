@@ -17,7 +17,7 @@ export const giftReducer = (state: GiftState, action: GiftActionType): GiftState
                gift.name === action.payload.name ?
                   {
                      ...gift,
-                     quantity: gift.quantity + action.payload.quantity /*BANANAS!*/
+                     quantity: Number(gift.quantity) + Number(action.payload.quantity) /*BANANAS!*/
                   }
                   : gift
             );
