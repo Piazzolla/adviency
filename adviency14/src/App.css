@@ -1,3 +1,16 @@
+.gift-image {
+  width: 3em;
+  max-height: 3em;
+  display: inline-block;
+  margin-right: 1em;
+}
+
+
+span {
+  margin-right: 1em;
+}
+
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
